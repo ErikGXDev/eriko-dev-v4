@@ -1,0 +1,16 @@
+---
+const paths = {
+  Home: "/",
+  Projects: "/#WORKINPROGRESS",
+  Blog: "/#WORKINPROGRESS",
+  Contact: "/#WORKINPROGRESS",
+};
+---
+
+<nav class="py-4 mb-8 flex gap-3 text-xl">
+  {
+    Object.keys(paths).map((key: string) => (
+      <a href={paths[key as keyof typeof paths]}>{key}</a>
+    ))
+  }
+</nav>
