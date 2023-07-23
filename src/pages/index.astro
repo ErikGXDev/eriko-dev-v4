@@ -1,11 +1,48 @@
 ---
+import BigCard from "../components/BigCard.astro";
+import Collapsible from "../components/Collapsible.svelte";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <h1 class="text-6xl font-black">Hi, I'm ErikGXDev.</h1>
-  <p>
-    Hi, I'm a Fullstack Developer from Germany. I'm interested in creating
-    websites and digital designing.
-  </p>
+  <div class="flex flex-col">
+    <div class="flex flex-col px-2">
+      <h1 class="text-5xl xl:text-6xl font-extrabold">I'm ErikGXDev.</h1>
+      <p class="text-xl w-3/4 mt-2">
+        I enjoy designing and making websites, creating interactive experiences
+        and drawing pixel art.
+      </p>
+    </div>
+
+    <div class="mt-8 step-gradient-5">
+      <Collapsible
+        client:idle
+        title="Developer"
+        className="bg-brand-orange-500"
+      >
+        <p>
+          For creating websites, I use a variety of frameworks. My favourite
+          framework is <b>Astro</b>, which allows me to combine multiple
+          Javascript frameworks.
+        </p>
+      </Collapsible>
+      <Collapsible client:idle title="Designer" className="bg-brand-red-500">
+        <p>
+          Designing is an important part in the process of making a website.
+          This is why I use <b>Figma</b> and other tools to plan ahead to get consistent
+          quality and style.
+        </p>
+      </Collapsible>
+      <Collapsible client:idle title="Artist" className="bg-[#df166f]">
+        <p>
+          I love Pixel Art because of its simplicity. I use this art style in
+          games I make. You can find these on my <a
+            class="underline"
+            href="https://erikgxdev.itch.io"
+            target="_blank">itch.io</a
+          > page.
+        </p>
+      </Collapsible>
+    </div>
+  </div>
 </Layout>

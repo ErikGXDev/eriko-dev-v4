@@ -7,7 +7,9 @@ const paths = {
 };
 ---
 
-<nav class="py-4 mb-8 flex gap-3 text-xl">
+<nav
+  class="p-4 mb-8 flex gap-3 text-xl w-full justify-center md:justify-start border-b border-b-brand-dark-900"
+>
   {
     Object.keys(paths).map((key: string) => (
       <a href={paths[key as keyof typeof paths]}>{key}</a>

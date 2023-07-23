@@ -1,0 +1,41 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@function gradientSteps($start, $end, $steps, $direction: "right") {
+  @if $steps < 2 {
+    $steps: 2;
+  }
+  $colors: ();
+  $stepSpan: calc(100% / $steps);
+  $spans: ();
+  //$stops: ($start 0%, $end 100%);
+  $stops: ();
+  @for $i from 0 through $steps - 1 {
+    $colors: append(
+      $colors,
+      mix($start, $end, 100% - calc($i/calc($steps - 1)) * 100)
+    );
+    $spans: append($spans, $i * calc(100% / $steps));
+  }
+  $spans: append($spans, 100%);
+  @for $i from 1 through $steps {
+    $stops: append($stops, (nth($colors, $i) nth($spans, $i)), comma);
+    $stops: append($stops, (nth($colors, $i) nth($spans, $i + 1)), comma);
+  }
+  @return linear-gradient(#{$direction}, $stops);
+}
+
+@layer components {
+  .step-gradient-3 {
+    background: gradientSteps(#ffa100, #df0063, 3, "to bottom");
+  }
+
+  .step-gradient-4 {
+    background: gradientSteps(#ffa100, #df0063, 4, "to bottom");
+  }
+
+  .step-gradient-5 {
+    background: gradientSteps(#ffa100, #df0063, 5, "to bottom");
+  }
+}
